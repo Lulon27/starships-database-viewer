@@ -20,13 +20,17 @@ public class DBViewer extends Application
 		Application.launch(args);
 	}
 	
+	public static final String DEFAULT_ADDRESS = "rs03-db-inf-min.ad.fh-bielefeld.de";
+	
 	private static final String MAIN_SCENE_FXML = "res/main_scene.fxml";
-
+	
 	private PreLoadingWindow preloader;
 	private Scene mainScene;
 	private MainController mainController;
 	
 	private final FormsHandler formsHandler = new FormsHandler();
+	
+	private final DatabaseProfile dbProfile = new DatabaseProfile();
 	
 	@Override
 	public void start(Stage stage)
@@ -89,5 +93,10 @@ public class DBViewer extends Application
 			Platform.exit();
 			return;
 		}
+	}
+	
+	public DatabaseProfile getDBProfile()
+	{
+		return this.dbProfile;
 	}
 }

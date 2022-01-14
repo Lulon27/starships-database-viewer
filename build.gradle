@@ -47,11 +47,10 @@ sourceSets
 
 dependencies
 {
-	
+	implementation 'com.oracle.ojdbc:ojdbc8:19.3.0.0'
 }
 
 repositories
 {
     mavenCentral()
 }
-
