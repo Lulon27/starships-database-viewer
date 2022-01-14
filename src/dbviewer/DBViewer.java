@@ -3,6 +3,9 @@ package dbviewer;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import dbviewer.form.FormAllAccounts;
+import dbviewer.form.FormAllResources;
+import dbviewer.form.FormsHandler;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +24,9 @@ public class DBViewer extends Application
 
 	private PreLoadingWindow preloader;
 	private Scene mainScene;
+	private MainController mainController;
+	
+	private final FormsHandler formsHandler = new FormsHandler();
 	
 	@Override
 	public void start(Stage stage)
@@ -40,6 +46,7 @@ public class DBViewer extends Application
 		{
 			this.initMainWindow(stage);
 			this.loadForms();
+			this.mainController.onFormsLoaded();
 			this.preloader.close();
 			stage.show();
 		});
@@ -48,9 +55,12 @@ public class DBViewer extends Application
 	private void initMainWindow(Stage primaryStage)
 	{
 		Parent mainSceneRoot;
+		this.mainController = new MainController(this.formsHandler);
 		try
 		{
-			mainSceneRoot = FXMLLoader.load(Path.of(MAIN_SCENE_FXML).toUri().toURL());
+			FXMLLoader fxmlLoader = new FXMLLoader(Path.of(MAIN_SCENE_FXML).toUri().toURL());
+			fxmlLoader.setController(this.mainController);
+			mainSceneRoot = fxmlLoader.load();
 		}
 		catch(IOException e)
 		{
@@ -67,6 +77,17 @@ public class DBViewer extends Application
 	
 	private void loadForms()
 	{
-		
+		try
+		{
+			this.formsHandler.registerForm(FormAllAccounts.class, "Get all accounts");
+			this.formsHandler.registerForm(FormAllResources.class, "Get all resources");
+			this.formsHandler.loadForms();
+		}
+		catch(RuntimeException e)
+		{
+			e.printStackTrace();
+			Platform.exit();
+			return;
+		}
 	}
 }

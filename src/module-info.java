@@ -4,6 +4,7 @@ module main
     requires javafx.fxml;
 	requires javafx.base;
 	requires javafx.graphics;
-    
+
     opens dbviewer;
+    opens dbviewer.form;
 }

@@ -3,16 +3,17 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
          <items>
-            <Label text="Label" />
-            <ChoiceBox prefWidth="150.0" />
+            <Label text="Form:" />
+            <ChoiceBox fx:id="formChooser" prefWidth="150.0" />
          </items>
       </ToolBar>
+      <Pane fx:id="formRoot" />
    </children>
 </VBox>
