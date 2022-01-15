@@ -6,8 +6,12 @@ import java.nio.file.Path;
 import dbviewer.form.FormAllAccountTiers;
 import dbviewer.form.FormAllAccounts;
 import dbviewer.form.FormAllBuildingTypes;
+import dbviewer.form.FormAllCountries;
 import dbviewer.form.FormAllOffers;
+import dbviewer.form.FormAllPaymentMethods;
+import dbviewer.form.FormAllPeople;
 import dbviewer.form.FormAllResources;
+import dbviewer.form.FormGetUser;
 import dbviewer.form.FormsHandler;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -85,8 +89,12 @@ public class DBViewer extends Application
 		this.formsHandler.registerForm(FormAllAccounts.class, "Get all accounts");
 		this.formsHandler.registerForm(FormAllAccountTiers.class, "Get all account tiers");
 		this.formsHandler.registerForm(FormAllBuildingTypes.class, "Get all building types");
+		this.formsHandler.registerForm(FormAllCountries.class, "Get all countries");
 		this.formsHandler.registerForm(FormAllOffers.class, "Get all offers");
+		this.formsHandler.registerForm(FormAllPaymentMethods.class, "Get all payment methods");
+		this.formsHandler.registerForm(FormAllPeople.class, "Get all people");
 		this.formsHandler.registerForm(FormAllResources.class, "Get all resources");
+		this.formsHandler.registerForm(FormGetUser.class, "Get a user's info");
 		try
 		{
 			this.formsHandler.loadForms();
