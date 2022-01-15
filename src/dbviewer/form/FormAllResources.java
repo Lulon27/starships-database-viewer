@@ -23,11 +23,6 @@ public class FormAllResources extends Form
 	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources)
-	{
-	}
-
-	@Override
 	public void executeQuery(Connection conn) throws SQLException
 	{
 		try(Statement st = conn.createStatement())

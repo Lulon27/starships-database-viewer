@@ -1,9 +1,11 @@
 package dbviewer.form;
 
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import dbviewer.DatabaseProfile;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,11 @@ public abstract class Form implements Initializable
 	public abstract String getFXMLPath();
 	
 	public abstract void executeQuery(Connection conn) throws SQLException;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+	}
 	
 	final void load() throws IOException
 	{
