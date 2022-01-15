@@ -7,10 +7,11 @@ import java.util.List;
 
 public class FormsHandler
 {
-	private List<FormInfo> forms;
+	private final List<FormInfo> forms;
 	
 	public FormsHandler()
 	{
+		
 		this.forms = new ArrayList<>();
 	}
 	
@@ -48,6 +49,10 @@ public class FormsHandler
 	{
 		for(FormInfo fr : this.forms)
 		{
+			if(fr.form != null)
+			{
+				continue;
+			}
 			try
 			{
 				fr.form = fr.formClass.getConstructor().newInstance();

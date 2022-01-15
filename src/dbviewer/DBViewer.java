@@ -30,8 +30,6 @@ public class DBViewer extends Application
 	
 	private final FormsHandler formsHandler = new FormsHandler();
 	
-	private final DatabaseProfile dbProfile = new DatabaseProfile();
-	
 	@Override
 	public void start(Stage stage)
 	{
@@ -93,10 +91,5 @@ public class DBViewer extends Application
 			Platform.exit();
 			return;
 		}
-	}
-	
-	public DatabaseProfile getDBProfile()
-	{
-		return this.dbProfile;
 	}
 }
