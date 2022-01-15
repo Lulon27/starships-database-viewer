@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 import dbviewer.form.FormAllAccounts;
+import dbviewer.form.FormAllBuildingTypes;
 import dbviewer.form.FormAllResources;
 import dbviewer.form.FormsHandler;
 import javafx.application.Application;
@@ -83,6 +84,7 @@ public class DBViewer extends Application
 		{
 			this.formsHandler.registerForm(FormAllAccounts.class, "Get all accounts");
 			this.formsHandler.registerForm(FormAllResources.class, "Get all resources");
+			this.formsHandler.registerForm(FormAllBuildingTypes.class, "Get all building types");
 			this.formsHandler.loadForms();
 		}
 		catch(RuntimeException e)
