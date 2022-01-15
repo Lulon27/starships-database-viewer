@@ -80,11 +80,11 @@ public class DBViewer extends Application
 	
 	private void loadForms()
 	{
+		this.formsHandler.registerForm(FormAllAccounts.class, "Get all accounts");
+		this.formsHandler.registerForm(FormAllResources.class, "Get all resources");
+		this.formsHandler.registerForm(FormAllBuildingTypes.class, "Get all building types");
 		try
 		{
-			this.formsHandler.registerForm(FormAllAccounts.class, "Get all accounts");
-			this.formsHandler.registerForm(FormAllResources.class, "Get all resources");
-			this.formsHandler.registerForm(FormAllBuildingTypes.class, "Get all building types");
 			this.formsHandler.loadForms();
 		}
 		catch(RuntimeException e)
