@@ -10,8 +10,10 @@ import dbviewer.form.FormsHandler;
 import dbviewer.form.FormsHandler.FormInfo;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 public class MainController implements Initializable
 {
@@ -21,7 +23,7 @@ public class MainController implements Initializable
 	private ChoiceBox<FormInfo> formChooser;
 	
 	@FXML
-	private Pane formRoot;
+	private VBox formRoot;
 	
 	private DatabaseProfile profile;
 	
@@ -42,7 +44,9 @@ public class MainController implements Initializable
 			{
 				return;
 			}
-			this.formRoot.getChildren().add(newVal.getForm().getUIContent());
+			final Parent uiContent = newVal.getForm().getUIContent();
+			VBox.setVgrow(uiContent, Priority.ALWAYS);
+			this.formRoot.getChildren().add(uiContent);
 		});
 		
 		this.settingsDialog = new ConnectionSettingsDialog();
