@@ -3,8 +3,10 @@ package dbviewer;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import dbviewer.form.FormAllAccountTiers;
 import dbviewer.form.FormAllAccounts;
 import dbviewer.form.FormAllBuildingTypes;
+import dbviewer.form.FormAllOffers;
 import dbviewer.form.FormAllResources;
 import dbviewer.form.FormsHandler;
 import javafx.application.Application;
@@ -81,8 +83,10 @@ public class DBViewer extends Application
 	private void loadForms()
 	{
 		this.formsHandler.registerForm(FormAllAccounts.class, "Get all accounts");
-		this.formsHandler.registerForm(FormAllResources.class, "Get all resources");
+		this.formsHandler.registerForm(FormAllAccountTiers.class, "Get all account tiers");
 		this.formsHandler.registerForm(FormAllBuildingTypes.class, "Get all building types");
+		this.formsHandler.registerForm(FormAllOffers.class, "Get all offers");
+		this.formsHandler.registerForm(FormAllResources.class, "Get all resources");
 		try
 		{
 			this.formsHandler.loadForms();
