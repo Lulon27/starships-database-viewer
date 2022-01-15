@@ -110,11 +110,13 @@ public class FormGetUser extends Form
 		}
 		else
 		{
+			this.setStatusText("Please select email or ID");
 			return;
 		}
 		
 		if(param.isBlank())
 		{
+			this.setStatusText("Please enter valid data");
 			return;
 		}
 		
@@ -124,6 +126,7 @@ public class FormGetUser extends Form
 			final ResultSet rs = st.executeQuery();
 			if(!rs.next())
 			{
+				this.setStatusText("No results");
 				return;
 			}
 			this.output_first_name.setText(rs.getString(1));

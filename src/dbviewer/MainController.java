@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
@@ -24,6 +25,9 @@ public class MainController implements Initializable
 	
 	@FXML
 	private VBox formRoot;
+	
+	@FXML
+	private Label statusLabel;
 	
 	private DatabaseProfile profile;
 	
@@ -47,9 +51,15 @@ public class MainController implements Initializable
 			final Parent uiContent = newVal.getForm().getUIContent();
 			VBox.setVgrow(uiContent, Priority.ALWAYS);
 			this.formRoot.getChildren().add(uiContent);
+			this.setFormStatus(newVal, newVal.getForm().getStatusText());
 		});
 		
 		this.settingsDialog = new ConnectionSettingsDialog();
+	}
+	
+	private void setFormStatus(FormInfo form, String status)
+	{
+		this.statusLabel.setText("[" + form.getDisplayName() + "] " + status);
 	}
 	
 	public void onClickConnectionSettings()
@@ -111,7 +121,12 @@ public class MainController implements Initializable
 		this.formChooser.getItems().clear();
 		for(int i = 0, n = this.formsHandler.getNumForms(); i < n; ++i)
 		{
-			this.formChooser.getItems().add(this.formsHandler.get(i));
+			FormInfo fi = this.formsHandler.get(i);
+			this.formChooser.getItems().add(fi);
+			fi.getForm().setStatusChangedListener(status ->
+			{
+				this.setFormStatus(fi, status);
+			});
 		}
 	}
 }

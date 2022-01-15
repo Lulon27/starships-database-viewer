@@ -18,6 +18,10 @@ public abstract class Form implements Initializable
 	
 	private Parent uiContent;
 	
+	private String statusText = "Ready";
+	
+	private FormStatusChangedListener statusChangedListener;
+	
 	public abstract String getFXMLPath();
 	
 	public abstract void executeQuery(Connection conn) throws SQLException;
@@ -47,5 +51,24 @@ public abstract class Form implements Initializable
 	public final Parent getUIContent()
 	{
 		return this.uiContent;
+	}
+	
+	public final String getStatusText()
+	{
+		return this.statusText;
+	}
+	
+	public final void setStatusText(String newStatus)
+	{
+		this.statusText = newStatus;
+		if(this.statusChangedListener != null)
+		{
+			this.statusChangedListener.onStatusChanged(newStatus);
+		}
+	}
+	
+	public void setStatusChangedListener(FormStatusChangedListener l)
+	{
+		this.statusChangedListener = l;
 	}
 }

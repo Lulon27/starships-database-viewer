@@ -19,5 +19,6 @@
          </items>
       </ToolBar>
       <VBox fx:id="formRoot" VBox.vgrow="SOMETIMES" />
+      <Label fx:id="statusLabel" />
    </children>
 </VBox>

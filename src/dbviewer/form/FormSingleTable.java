@@ -28,10 +28,16 @@ public abstract class FormSingleTable extends Form
 			if(st.execute(this.getQueryString()))
 			{
 				DatabaseHelper.fillFXTable(this.entries, st.getResultSet());
+				this.setStatusText("Execution successful");
+			}
+			else
+			{
+				this.setStatusText("No results");
 			}
 		}
 		catch(SQLException e)
 		{
+			this.setStatusText("Execution failed" + e);
 			throw e;
 		}
 	}
