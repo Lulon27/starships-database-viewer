@@ -11,6 +11,7 @@ import dbviewer.form.FormAllPaymentMethods;
 import dbviewer.form.FormAllPeople;
 import dbviewer.form.FormAllResources;
 import dbviewer.form.FormGetUser;
+import dbviewer.form.FormNewUser;
 import dbviewer.form.FormsHandler;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -93,6 +94,7 @@ public class DBViewer extends Application
 		this.formsHandler.registerForm(FormAllPeople.class, "Get all people");
 		this.formsHandler.registerForm(FormAllResources.class, "Get all resources");
 		this.formsHandler.registerForm(FormGetUser.class, "Get a user's info");
+		this.formsHandler.registerForm(FormNewUser.class, "Create a user");
 		try
 		{
 			this.formsHandler.loadForms();
